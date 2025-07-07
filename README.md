@@ -6,7 +6,7 @@
 A storytelling-based web game to learn modern C++14 and C++17 concepts through interactive adventures.
 
 ## 🎮 Play Online
-**[🚀 Play C++ Code Quest](https://yourusername.github.io/cpp-code-quest)**
+**[🚀 Play C++ Code Quest](https://starlord03.github.io/cpp-code-quest/)**
 
 ## 🎯 Game Overview
 
