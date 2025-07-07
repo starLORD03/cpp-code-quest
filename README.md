@@ -37,7 +37,7 @@ Journey through mystical lands while mastering advanced C++ features:
 ## 🚀 Quick Start
 
 ### Play Online
-Just visit the [live demo](https://yourusername.github.io/cpp-code-quest) and start playing!
+Just visit the [live demo](https://starlord03.github.io/cpp-code-quest/) and start playing!
 
 ### Local Development
 ```bash
