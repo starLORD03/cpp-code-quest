@@ -1,0 +1,33 @@
+{
+  "name": "cpp-code-quest",
+  "version": "1.0.0",
+  "description": "A storytelling-based web game to learn modern C++14 and C++17 concepts",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cpp-code-quest.git"
+  },
+  "keywords": [
+    "cpp",
+    "c++",
+    "programming",
+    "game",
+    "education",
+    "tutorial",
+    "c++14",
+    "c++17"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/cpp-code-quest/issues"
+  },
+  "homepage": "https://yourusername.github.io/cpp-code-quest",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}

@@ -1,0 +1,377 @@
+/* C++ Code Quest - Complete CSS Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #e2e8f0;
+}
+
+.game-container {
+    background: rgba(26, 32, 44, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-title {
+    font-size: 2.5em;
+    color: #63b3ed;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.game-subtitle {
+    font-size: 1.2em;
+    color: #a0aec0;
+    margin-bottom: 10px;
+}
+
+.cpp-version {
+    background: linear-gradient(45deg, #f56565, #ed8936);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    background: #2d3748;
+    border-radius: 10px;
+    height: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid #4a5568;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #48bb78, #38a169);
+    height: 100%;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.story-section {
+    background: rgba(45, 55, 72, 0.8);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-left: 5px solid #63b3ed;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.story-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #e2e8f0;
+    margin-bottom: 15px;
+}
+
+.code-challenge {
+    background: #1a202c;
+    color: #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    border: 1px solid #4a5568;
+}
+
+.code-input {
+    width: 100%;
+    background: #2d3748;
+    color: #e2e8f0;
+    border: 2px solid #4a5568;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 14px;
+    margin-top: 10px;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.code-input:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.1);
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #63b3ed, #4299e1);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 179, 237, 0.4);
+}
+
+.btn-secondary {
+    background: #4a5568;
+    color: #e2e8f0;
+    border: 1px solid #718096;
+}
+
+.btn-secondary:hover {
+    background: #718096;
+    transform: translateY(-1px);
+}
+
+.btn-github {
+    background: linear-gradient(135deg, #333, #24292e);
+    color: white;
+}
+
+.btn-github:hover {
+    background: linear-gradient(135deg, #24292e, #1b1f23);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.feedback {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 1px solid;
+}
+
+.feedback.success {
+    background: rgba(72, 187, 120, 0.1);
+    color: #68d391;
+    border-color: #48bb78;
+}
+
+.feedback.error {
+    background: rgba(245, 101, 101, 0.1);
+    color: #fc8181;
+    border-color: #f56565;
+}
+
+.concept-box {
+    background: rgba(99, 179, 237, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #63b3ed;
+    border: 1px solid rgba(99, 179, 237, 0.2);
+}
+
+.concept-title {
+    font-weight: bold;
+    color: #63b3ed;
+    margin-bottom: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+.character {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+.inventory {
+    background: rgba(72, 187, 120, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    border: 2px solid #48bb78;
+}
+
+.inventory-title {
+    font-weight: bold;
+    color: #68d391;
+    margin-bottom: 10px;
+}
+
+.inventory-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.inventory-item {
+    background: rgba(72, 187, 120, 0.2);
+    color: #68d391;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    border: 1px solid #48bb78;
+}
+
+.github-section {
+    background: rgba(36, 41, 46, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.github-title {
+    color: #63b3ed;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.project-structure {
+    background: #1a202c;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    overflow-x: auto;
+}
+
+.file-tree {
+    color: #a0aec0;
+    white-space: pre-line;
+}
+
+.cpp-syntax {
+    color: #f7931e;
+}
+
+.keyword {
+    color: #c678dd;
+}
+
+.string {
+    color: #98c379;
+}
+
+.comment {
+    color: #5c6370;
+    font-style: italic;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .game-title {
+        font-size: 2em;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .code-input {
+        min-height: 100px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 1.8em;
+    }
+    
+    .story-section {
+        padding: 15px;
+    }
+    
+    .code-challenge {
+        padding: 15px;
+    }
+}
+
+/* Accessibility */
+.btn:focus {
+    outline: 2px solid #63b3ed;
+    outline-offset: 2px;
+}
+
+.code-input:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.1);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.story-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Dark theme optimizations */
+::selection {
+    background: rgba(99, 179, 237, 0.3);
+    color: #e2e8f0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a5568;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
