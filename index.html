@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Code Quest: Modern Adventures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #e2e8f0;
+        }
+
+        .game-container {
+            background: rgba(26, 32, 44, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .game-title {
+            font-size: 2.5em;
+            color: #63b3ed;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-subtitle {
+            font-size: 1.2em;
+            color: #a0aec0;
+            margin-bottom: 10px;
+        }
+
+        .cpp-version {
+            background: linear-gradient(45deg, #f56565, #ed8936);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background: #2d3748;
+            border-radius: 10px;
+            height: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid #4a5568;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #48bb78, #38a169);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .story-section {
+            background: rgba(45, 55, 72, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #63b3ed;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .story-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #e2e8f0;
+            margin-bottom: 15px;
+        }
+
+        .code-challenge {
+            background: #1a202c;
+            color: #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            border: 1px solid #4a5568;
+        }
+
+        .code-input {
+            width: 100%;
+            background: #2d3748;
+            color: #e2e8f0;
+            border: 2px solid #4a5568;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 14px;
+            margin-top: 10px;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #63b3ed;
+            box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.1);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #63b3ed, #4299e1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 179, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: #4a5568;
+            color: #e2e8f0;
+            border: 1px solid #718096;
+        }
+
+        .btn-secondary:hover {
+            background: #718096;
+            transform: translateY(-1px);
+        }
+
+        .btn-github {
+            background: linear-gradient(135deg, #333, #24292e);
+            color: white;
+        }
+
+        .btn-github:hover {
+            background: linear-gradient(135deg, #24292e, #1b1f23);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid;
+        }
+
+        .feedback.success {
+            background: rgba(72, 187, 120, 0.1);
+            color: #68d391;
+            border-color: #48bb78;
+        }
+
+        .feedback.error {
+            background: rgba(245, 101, 101, 0.1);
+            color: #fc8181;
+            border-color: #f56565;
+        }
+
+        .concept-box {
+            background: rgba(99, 179, 237, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #63b3ed;
+            border: 1px solid rgba(99, 179, 237, 0.2);
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #63b3ed;
+            margin-bottom: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .character {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        .inventory {
+            background: rgba(72, 187, 120, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 2px solid #48bb78;
+        }
+
+        .inventory-title {
+            font-weight: bold;
+            color: #68d391;
+            margin-bottom: 10px;
+        }
+
+        .inventory-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .inventory-item {
+            background: rgba(72, 187, 120, 0.2);
+            color: #68d391;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            border: 1px solid #48bb78;
+        }
+
+        .github-section {
+            background: rgba(36, 41, 46, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .github-title {
+            color: #63b3ed;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .project-structure {
+            background: #1a202c;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+
+        .file-tree {
+            color: #a0aec0;
+            white-space: pre-line;
+        }
+
+        .cpp-syntax {
+            color: #f7931e;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">⚡ C++ Code Quest</h1>
+            <p class="game-subtitle">Modern C++ Adventures</p>
+            <div class="cpp-version">C++14/17 Edition</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div id="gameContent">
+            <!-- Game content will be dynamically inserted here -->
+        </div>
+
+        <div class="inventory hidden" id="inventory">
+            <div class="inventory-title">🛠️ Your C++ Arsenal</div>
+            <div class="inventory-items" id="inventoryItems"></div>
+        </div>
+
+        <div class="github-section" id="githubSection">
+            <h3 class="github-title">📁 GitHub Project Structure</h3>
+            <div class="project-structure">
+                <div class="file-tree">cpp-code-quest/
+├── README.md
+├── CMakeLists.txt
+├── .gitignore
+├── LICENSE
+├── docs/
+│   ├── GAMEPLAY.md
+│   └── CONCEPTS.md
+├── src/
+│   ├── main.cpp
+│   ├── game/
+│   │   ├── GameEngine.hpp
+│   │   ├── GameEngine.cpp
+│   │   ├── Level.hpp
+│   │   └── Level.cpp
+│   └── utils/
+│       ├── StringUtils.hpp
+│       └── FileUtils.hpp
+├── examples/
+│   ├── level1_auto.cpp
+│   ├── level2_lambdas.cpp
+│   ├── level3_smart_pointers.cpp
+│   ├── level4_move_semantics.cpp
+│   └── level5_advanced.cpp
+└── tests/
+    ├── test_main.cpp
+    └── CMakeLists.txt</div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-github" onclick="game.generateGitHubFiles()">📦 Generate Project Files</button>
+                <button class="btn btn-secondary" onclick="game.showProjectGuide()">📖 Setup Guide</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class CppCodeQuest {
+            constructor() {
+                this.currentLevel = 0;
+                this.inventory = [];
+                this.progress = 0;
+                this.init();
+            }
+
+            init() {
+                this.showLevel();
+            }
+
+            levels = [
+                {
+                    title: "The Temple of Auto",
+                    story: "🏛️ You enter an ancient temple where the Oracle of Types dwells. The walls are covered with cryptic C++ symbols, and the air shimmers with template magic.",
+                    character: "🔮",
+                    dialogue: "Welcome, young programmer! The age of verbose type declarations is ending. I shall teach you the power of 'auto' - let the compiler deduce types for you! But first, prove your understanding.",
+                    concept: "Auto Type Deduction (C++14)",
+                    conceptExplanation: "The 'auto' keyword lets the compiler automatically deduce variable types from their initializers. C++14 extended this to function return types and lambda parameters.",
+                    challenge: "Create variables using auto for different types and show a generic lambda:",
+                    solution: "auto number = 42;\nauto text = \"Hello C++14\";\nauto lambda = [](auto x) { return x * 2; };\nauto result = lambda(5);",
+                    hint: "Use 'auto' instead of explicit types, and try a generic lambda with 'auto' parameter",
+                    reward: "Auto Deduction Scroll 📜",
+                    cppVersion: "C++14"
+                },
+                {
+                    title: "The Lambda Sanctuary",
+                    story: "🌟 Deep in the Lambda Sanctuary, you find a mysterious altar surrounded by floating code fragments. The Guardian of Closures materializes before you.",
+                    character: "👻",
+                    dialogue: "Ah, a seeker of functional wisdom! Lambdas are the soul of modern C++. They capture the essence of functions and bind them to your will. Show me you understand capture by value, reference, and the new generalized capture!",
+                    concept: "Advanced Lambdas (C++14)",
+                    conceptExplanation: "C++14 introduced generalized capture (init capture) allowing you to move variables into lambdas and create new variables in the capture list.",
+                    challenge: "Create a lambda with generalized capture that moves a unique_ptr:",
+                    solution: "auto ptr = std::make_unique<int>(42);\nauto lambda = [p = std::move(ptr)](auto multiplier) {\n    return *p * multiplier;\n};\nauto result = lambda(3);",
+                    hint: "Use [p = std::move(ptr)] syntax for generalized capture",
+                    reward: "Lambda Mastery Badge 🏅",
+                    cppVersion: "C++14"
+                },
+                {
+                    title: "The Smart Pointer Forge",
+                    story: "🔨 You arrive at an ancient forge where Smart Pointers are crafted. The Master Smith, wielding hammers of memory management, challenges you to prove your worth.",
+                    character: "🧙‍♂️",
+                    dialogue: "Raw pointers are the bane of C++! Here in my forge, we craft smart pointers that manage memory automatically. Show me you can wield unique_ptr, shared_ptr, and the mighty make_unique!",
+                    concept: "Smart Pointers & make_unique (C++14)",
+                    conceptExplanation: "C++14 introduced std::make_unique, completing the smart pointer family. Smart pointers automatically manage memory, preventing leaks and dangling pointers.",
+                    challenge: "Create and use smart pointers with make_unique and make_shared:",
+                    solution: "auto unique = std::make_unique<int>(42);\nauto shared1 = std::make_shared<std::string>(\"Hello\");\nauto shared2 = shared1; // shared ownership\nstd::cout << *unique << \" \" << *shared1;",
+                    hint: "Use std::make_unique<type>(args) and std::make_shared<type>(args)",
+                    reward: "Memory Guardian Shield 🛡️",
+                    cppVersion: "C++14"
+                },
+                {
+                    title: "The Valley of Move Semantics",
+                    story: "🏔️ In the treacherous Valley of Move Semantics, you encounter the Spirit of Efficiency. Ancient runes speak of perfect forwarding and the mystic std::forward.",
+                    character: "⚡",
+                    dialogue: "Performance is everything in this valley! Learn to move resources instead of copying them. Master std::move, std::forward, and understand when the compiler moves automatically!",
+                    concept: "Move Semantics & Perfect Forwarding (C++14/17)",
+                    conceptExplanation: "Move semantics allow transferring resources instead of copying them. Perfect forwarding preserves the value category of arguments when passing them to other functions.",
+                    challenge: "Implement a function template with perfect forwarding:",
+                    solution: "template<typename T>\nauto wrapper(T&& arg) {\n    return std::forward<T>(arg);\n}\n\nauto result = wrapper(std::string(\"moved\"));\nauto moved = std::move(result);",
+                    hint: "Use T&& for universal references and std::forward<T> for perfect forwarding",
+                    reward: "Move Semantics Mastery 🚀",
+                    cppVersion: "C++14/17"
+                },
+                {
+                    title: "The Citadel of Structured Bindings",
+                    story: "🏰 At the peak of your journey, you reach the Citadel of Structured Bindings. The C++17 Archmaster awaits, ready to test your knowledge of the most modern C++ features.",
+                    character: "👑",
+                    dialogue: "Welcome to the pinnacle of modern C++! Here we unpack tuples, decompose pairs, and bind structured data with elegant syntax. Show me you can master structured bindings, if constexpr, and fold expressions!",
+                    concept: "Modern C++17 Features",
+                    conceptExplanation: "C++17 introduced structured bindings for unpacking tuples/pairs, if constexpr for compile-time conditionals, and fold expressions for variadic templates.",
+                    challenge: "Use structured bindings and if constexpr:",
+                    solution: "auto pair = std::make_pair(42, \"Hello\");\nauto [number, text] = pair;\n\ntemplate<typename T>\nauto process(T value) {\n    if constexpr (std::is_integral_v<T>) {\n        return value * 2;\n    } else {\n        return value;\n    }\n}",
+                    hint: "Use auto [a, b] = pair; and if constexpr (condition)",
+                    reward: "C++17 Grandmaster Crown 👑",
+                    cppVersion: "C++17"
+                }
+            ];
+
+            showLevel() {
+                const level = this.levels[this.currentLevel];
+                const gameContent = document.getElementById('gameContent');
+                
+                gameContent.innerHTML = `
+                    <div class="story-section">
+                        <h2>${level.title}</h2>
+                        <div class="cpp-version" style="font-size: 0.8em; margin-bottom: 15px;">${level.cppVersion}</div>
+                        <p class="story-text">${level.story}</p>
+                        <p class="story-text"><span class="character">${level.character}</span><em>"${level.dialogue}"</em></p>
+                        
+                        <div class="concept-box">
+                            <div class="concept-title">🧠 C++ Concept: ${level.concept}</div>
+                            <p>${level.conceptExplanation}</p>
+                        </div>
+                        
+                        <div class="code-challenge">
+                            <h3>⚔️ Your C++ Challenge:</h3>
+                            <p>${level.challenge}</p>
+                            <textarea class="code-input" id="codeInput" placeholder="// Write your C++ code here...
+#include <iostream>
+#include <memory>
+#include <string>
+
+int main() {
+    // Your solution goes here
+    
+    return 0;
+}"></textarea>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" onclick="game.checkAnswer()">⚡ Compile & Run</button>
+                                <button class="btn btn-secondary" onclick="game.showHint()">💡 Get Hint</button>
+                                <button class="btn btn-secondary" onclick="game.showSolution()">🔍 Show Solution</button>
+                            </div>
+                        </div>
+                        
+                        <div id="feedback" class="feedback hidden"></div>
+                    </div>
+                `;
+                
+                this.updateProgress();
+                this.showInventory();
+            }
+
+            showHint() {
+                const level = this.levels[this.currentLevel];
+                const feedback = document.getElementById('feedback');
+                feedback.className = 'feedback';
+                feedback.style.background = 'rgba(237, 137, 54, 0.1)';
+                feedback.style.color = '#ed8936';
+                feedback.style.borderColor = '#ed8936';
+                feedback.innerHTML = `💡 Hint: ${level.hint}`;
+                feedback.classList.remove('hidden');
+            }
+
+            showSolution() {
+                const level = this.levels[this.currentLevel];
+                const feedback = document.getElementById('feedback');
+                feedback.className = 'feedback';
+                feedback.style.background = 'rgba(99, 179, 237, 0.1)';
+                feedback.style.color = '#63b3ed';
+                feedback.style.borderColor = '#63b3ed';
+                feedback.innerHTML = `🔍 Solution:<br><pre style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; overflow-x: auto;">${level.solution}</pre>`;
+                feedback.classList.remove('hidden');
+            }
+
+            checkAnswer() {
+                const userCode = document.getElementById('codeInput').value.trim();
+                const level = this.levels[this.currentLevel];
+                const feedback = document.getElementById('feedback');
+                
+                feedback.classList.remove('hidden');
+                
+                if (this.isCorrectSolution(userCode, level)) {
+                    feedback.className = 'feedback success';
+                    feedback.innerHTML = `🎉 Excellent! You've mastered ${level.concept}!<br>You earned: ${level.reward}`;
+                    
+                    this.inventory.push(level.reward);
+                    
+                    setTimeout(() => {
+                        this.nextLevel();
+                    }, 2500);
+                } else {
+                    feedback.className = 'feedback error';
+                    feedback.innerHTML = `🔧 Code needs refinement. Make sure you're using the key concepts: ${level.hint}`;
+                }
+            }
+
+            isCorrectSolution(userCode, level) {
+                const cleanCode = userCode.replace(/\s+/g, ' ').trim().toLowerCase();
+                
+                switch(this.currentLevel) {
+                    case 0:
+                        return cleanCode.includes('auto') && cleanCode.includes('lambda') && cleanCode.includes('[');
+                    case 1:
+                        return cleanCode.includes('auto') && cleanCode.includes('=') && cleanCode.includes('std::move');
+                    case 2:
+                        return cleanCode.includes('make_unique') && cleanCode.includes('make_shared');
+                    case 3:
+                        return cleanCode.includes('std::forward') && cleanCode.includes('&&');
+                    case 4:
+                        return cleanCode.includes('auto [') && cleanCode.includes('if constexpr');
+                    default:
+                        return false;
+                }
+            }
+
+            nextLevel() {
+                this.currentLevel++;
+                if (this.currentLevel < this.levels.length) {
+                    this.showLevel();
+                } else {
+                    this.showVictory();
+                }
+            }
+
+            showVictory() {
+                const gameContent = document.getElementById('gameContent');
+                gameContent.innerHTML = `
+                    <div class="story-section" style="text-align: center;">
+                        <h2>🏆 C++ Grandmaster Achieved!</h2>
+                        <p class="story-text">You have mastered the advanced concepts of modern C++14 and C++17! You're ready to build high-performance applications with elegant, modern code.</p>
+                        <p class="story-text">🚀 Your journey in C++ has just begun. Use the GitHub project structure below to continue learning!</p>
+                        <div class="btn-group" style="justify-content: center;">
+                            <button class="btn btn-primary" onclick="game.restart()">🔄 New Adventure</button>
+                            <button class="btn btn-github" onclick="game.generateGitHubFiles()">📦 Download Project</button>
+                        </div>
+                    </div>
+                `;
+                this.progress = 100;
+                this.updateProgress();
+            }
+
+            restart() {
+                this.currentLevel = 0;
+                this.inventory = [];
+                this.progress = 0;
+                this.showLevel();
+            }
+
+            updateProgress() {
+                this.progress = (this.currentLevel / this.levels.length) * 100;
+                document.getElementById('progressFill').style.width = `${this.progress}%`;
+            }
+
+            showInventory() {
+                const inventoryDiv = document.getElementById('inventory');
+                const inventoryItems = document.getElementById('inventoryItems');
+                
+                if (this.inventory.length > 0) {
+                    inventoryDiv.classList.remove('hidden');
+                    inventoryItems.innerHTML = this.inventory.map(item => 
+                        `<div class="inventory-item">${item}</div>`
+                    ).join('');
+                } else {
+                    inventoryDiv.classList.add('hidden');
+                }
+            }
+
+            generateGitHubFiles() {
+                const projectFiles = this.createProjectFiles();
+                const blob = new Blob([projectFiles.readme], { type: 'text/markdown' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'cpp-code-quest-README.md';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                alert('📦 Project files generated! Check your downloads folder for the README.md file. Use this as a starting point for your GitHub repository.');
+            }
+
+            showProjectGuide() {
+                const feedback = document.getElementById('feedback');
+                feedback.className = 'feedback';
+                feedback.style.background = 'rgba(99, 179, 237, 0.1)';
+                feedback.style.color = '#63b3ed';
+                feedback.style.borderColor = '#63b3ed';
+                feedback.innerHTML = `
+                    <h4>🚀 GitHub Setup Guide:</h4>
+                    <ol style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
+                        <li>Create a new repository on GitHub called "cpp-code-quest"</li>
+                        <li>Clone it locally: <code>git clone https://github.com/yourusername/cpp-code-quest.git</code></li>
+                        <li>Create the folder structure shown above</li>
+                        <li>Generate and add the project files using the button above</li>
+                        <li>Commit and push: <code>git add . && git commit -m "Initial commit" && git push</code></li>
+                    </ol>
+                `;
+                feedback.classList.remove('hidden');
+            }
+
+            createProjectFiles() {
+                return {
+                    readme: `# C++ Code Quest 🏰⚔️
+
+A storytelling-based game to learn modern C++14 and C++17 concepts through interactive adventures.
+
+## 🎮 Game Overview
+
+Journey through mystical lands while mastering advanced C++ features:
+
+- **Temple of Auto**: Learn auto type deduction and generic lambdas
+- **Lambda Sanctuary**: Master generalized capture and advanced lambdas  
+- **Smart Pointer Forge**: Understand memory management with smart pointers
+- **Valley of Move Semantics**: Perfect forwarding and move semantics
+- **Citadel of Structured Bindings**: Modern C++17 features
+
+## 🛠️ Building the Project
+
+### Prerequisites
+- C++17 compatible compiler (GCC 7+, Clang 5+, MSVC 2017+)
+- CMake 3.10+
+
+### Build Instructions
+\`\`\`bash
+mkdir build && cd build
+cmake ..
+make
+./cpp-code-quest
+\`\`\`
+
+## 📚 Learning Objectives
+
+### C++14 Features
+- Auto type deduction for function return types
+- Generic lambdas with auto parameters
+- Generalized lambda capture (init capture)
+- std::make_unique
+- Variable templates
+
+### C++17 Features
+- Structured bindings
+- if constexpr
+- Fold expressions
+- std::optional
+- std::variant
+
+## 🎯 Game Mechanics
+
+Each level teaches a specific concept through:
+1. **Story Context**: Immersive narrative setting
+2. **Concept Explanation**: Clear learning objectives
+3. **Code Challenge**: Hands-on practice
+4. **Immediate Feedback**: Hints and solutions
+5. **Progress Tracking**: Achievement system
+
+## 🏗️ Project Structure
+
+\`\`\`
+cpp-code-quest/
+├── src/           # Game engine and core logic
+├── examples/      # Example solutions for each level
+├── tests/         # Unit tests
+├── docs/          # Documentation
+└── CMakeLists.txt # Build configuration
+\`\`\`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Add new levels or improve existing ones
+4. Submit a pull request
+
+## 📖 Documentation
+
+- [Gameplay Guide](docs/GAMEPLAY.md)
+- [C++ Concepts Reference](docs/CONCEPTS.md)
+- [Adding New Levels](docs/DEVELOPMENT.md)
+
+## 🏆 Achievements
+
+Track your progress through the C++ mastery system:
+- 📜 Auto Deduction Scroll
+- 🏅 Lambda Mastery Badge  
+- 🛡️ Memory Guardian Shield
+- 🚀 Move Semantics Mastery
+- 👑 C++17 Grandmaster Crown
+
+## 📜 License
+
+MIT License - see LICENSE file for details.
+
+## 🌟 Acknowledgments
+
+Created to make learning modern C++ concepts engaging and memorable through interactive storytelling.
+
+---
+
+*"The best way to learn C++ is by writing C++ code!"* - Bjarne Stroustrup
+`
+                };
+            }
+        }
+
+        // Initialize the game
+        const game = new CppCodeQuest();
+    </script>
+</body>
+</html>
