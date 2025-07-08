@@ -1,6 +1,6 @@
 # C++ Code Quest 🏰⚔️
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://yourusername.github.io/cpp-code-quest)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://starlord03.github.io/cpp-code-quest/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A storytelling-based web game to learn modern C++14 and C++17 concepts through interactive adventures.
