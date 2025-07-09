@@ -100,8 +100,7 @@ int main() {
     
     // Array smart pointers
     std::cout << "\n=== Smart Pointer Arrays ===\n";
-    auto weapon_array = std::make_unique<Weapon[]>(3);
-    
+    //auto weapon_array = std::make_unique<Weapon[]>(3); // Removed: Weapon has no default constructor
     // Note: Array version doesn't call constructor with parameters
     // Better to use std::vector with smart pointers
     std::vector<std::unique_ptr<Weapon>> weapon_collection;
