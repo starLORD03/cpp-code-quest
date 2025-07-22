@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <algorithm>
+#include <fstream>  // <-- REQUIRED for std::ofstream
 #include <vector>
 #include <optional>
 #include <unordered_map>

@@ -12,7 +12,7 @@ public:
           const std::string& story,
           const std::string& character,
           const std::string& dialogue,
-          const std::string& concept,
+          const std::string& conceptName,
           const std::string& conceptExplanation,
           const std::string& challenge,
           const std::string& reward,
