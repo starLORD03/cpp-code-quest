@@ -42,7 +42,7 @@ Just visit the [live demo](https://starlord03.github.io/cpp-code-quest/) and sta
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cpp-code-quest.git
+git clone https://github.com/starlord03/cpp-code-quest.git
 cd cpp-code-quest
 
 # Open in browser
