@@ -8,13 +8,13 @@ Level::Level(const std::string& title,
              const std::string& story,
              const std::string& character,
              const std::string& dialogue,
-             const std::string& concept,
+             const std::string& conceptName,
              const std::string& conceptExplanation,
              const std::string& challenge,
              const std::string& reward,
              ValidationFunction validator)
     : title_(title), story_(story), character_(character), dialogue_(dialogue),
-      concept_(concept), conceptExplanation_(conceptExplanation), challenge_(challenge),
+      concept_(conceptName), conceptExplanation_(conceptExplanation), challenge_(challenge),
       reward_(reward), validator_(validator), completed_(false) {}
 
 void Level::play() {
