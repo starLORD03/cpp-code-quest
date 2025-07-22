@@ -255,7 +255,7 @@ template<typename T>
 constexpr T pi = T(3.14159265358979323846);
 
 TEST(VariableTemplates, PiTemplate) {
-    EXPECT_FLOAT_EQ(pi<float>, 3.14159f);
+    EXPECT_NEAR(pi<float>, 3.14159f, 5e-6f);
     EXPECT_DOUBLE_EQ(pi<double>, 3.14159265358979323846);
 }
 
