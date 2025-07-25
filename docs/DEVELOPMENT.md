@@ -1,34 +1,87 @@
-### 8. docs/DEVELOPMENT.md
-```markdown
-# Development Guide 🛠️
+# Development Guide
 
-## Contributing to C++ Code Quest
+This document describes how to build and run the project on both Windows and Linux.
 
-### Setting Up Development Environment
+---
 
-1. **Fork the Repository**
-   ```bash
-   git clone https://github.com/yourusername/cpp-code-quest.git
-   cd cpp-code-quest
+## Prerequisites
+
+- **CMake** (version 3.10 or higher)
+- **C++ Compiler**
+  - Windows: MSVC or MinGW
+  - Linux: GCC or Clang
+- **Git** (optional, for cloning the repository)
+
+---
+
+## Building and Running on Windows
+
+1. **Open a terminal (Command Prompt or PowerShell).**
+2. **Navigate to the project directory:**
+   ```sh
+   cd path\to\cpp-code-quest
    ```
+3. **Ensure the `build` directory exists and is configured with CMake.**  
+   If not, run:
+   ```sh
+   cmake -S . -B build
+   ```
+4. **Build the project using the batch script:**
+   ```sh
+   build.bat
+   ```
+   - This will build all targets.
+   - To build and run a specific example (e.g., `level3_smart_pointers`):
+     ```sh
+     build.bat level3_smart_pointers
+     ```
+   - For help:
+     ```sh
+     build.bat -h
+     ```
 
-2. **Local Development**
-# Simple HTTP server
-python -m http.server 8000
-# Or use Node.js
-npx http-server
+---
 
-3. **Open Browser**
-http://localhost:8000
+## Building and Running on Linux
 
+1. **Open a terminal.**
+2. **Navigate to the project directory:**
+   ```sh
+   cd path/to/cpp-code-quest
+   ```
+3. **Ensure the `build` directory exists and is configured with CMake.**  
+   If not, run:
+   ```sh
+   cmake -S . -B build
+   ```
+4. **Make the build script executable (first time only):**
+   ```sh
+   chmod +x build.sh
+   ```
+5. **Build the project using the shell script:**
+   ```sh
+   ./build.sh
+   ```
+   - This will build all targets.
+   - To build and run a specific example (e.g., `level3_smart_pointers`):
+     ```sh
+     ./build.sh level3_smart_pointers
+     ```
+   - For help:
+     ```sh
+     ./build.sh -h
+     ```
 
-# Project Structure
-cpp-code-quest/
-├── index.html          # Main game page
-├── assets/
-│   ├── css/
-│   │   └── styles.css  # Game styling
-│   └── js/
-│       └── game.js     # Game logic
-├── docs/               # Documentation
-└── examples/           # C++ example code
+---
+
+## Output
+
+- Executables are generated in the `build/src/` or `build/examples/` directories.
+- The scripts will attempt to run the built executable if a specific target is provided.
+
+---
+
+## Troubleshooting
+
+- Ensure all dependencies are installed and available in your system's PATH.
+- If you encounter build errors, check that your compiler supports C++14/17 features.
